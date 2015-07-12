@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EPUB CFI Generator</title>
+    <meta charset="utf-8"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="stylesheets/style.css"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="row vertical-align">
+        <div class="col-xs-12 col-md-12">
+            <div>
+                <h1>EPUB CFI Generator demo</h1>
+                <br/>
+                <h4>Choose EPUB file to process</h4>
+                <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+                    <div style="position:relative;">
+                        <a class="btn btn-primary" href="javascript:;">
+                            Browse
+                            <input type="file" name="epub" size="40"  onchange="document.getElementById('uploadForm').submit()">
+                        </a>
+                        &nbsp;
+                        <span class="label label-info" id="upload-file-info"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p>Demo for <a href="http://www.silkcode.de/#p13">LookUP!</a> project of <a href="http://silkcode.de">SilkCode UG</a>. pmstss 2015</p>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+

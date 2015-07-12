@@ -1,0 +1,48 @@
+html, body, .container > .row, .container > .row > div {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+.container {
+  height: calc(100% - 42px);
+}
+
+.vertical-align {
+  display: flex;
+  flex-direction: row;
+}
+
+.vertical-align > [class^="col-"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type="file"] {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  filter: alpha(opacity=0);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  opacity: 0;
+  background-color: transparent;
+  color: transparent;
+}
+
+.container > .row > div {
+  text-align: center;
+}
+
+#footer {
+  background: #ddd;
+  height: 42px;
+}
+
+#footer .container p {
+  text-align: center;
+  line-height: 42px;
+}
