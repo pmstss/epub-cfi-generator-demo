@@ -6,6 +6,12 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="stylesheets/style.css"/>
+    
+    <style>
+        .processing {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
@@ -15,17 +21,23 @@
             <div>
                 <h1>EPUB CFI Generator demo</h1>
                 <br/>
-                <h4>Choose EPUB file to process</h4>
-                <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
-                    <div style="position:relative;">
-                        <a class="btn btn-primary" href="javascript:;">
-                            Browse
-                            <input type="file" name="epub" size="40" accept="application/epub+zip" onchange="document.getElementById('uploadForm').submit()">
-                        </a>
-                        &nbsp;
-                        <span class="label label-info" id="upload-file-info"></span>
-                    </div>
-                </form>
+                <div class="uploading">
+                    <h4>Choose EPUB file to process</h4>
+                    <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+                        <div style="position:relative;">
+                            <a class="btn btn-primary" href="javascript:;">
+                                Browse
+                                <input type="file" id="epub" name="epub" size="40" accept="application/epub+zip">
+                            </a>
+                            &nbsp;
+                            <span class="label label-info" id="upload-file-info"></span>
+                        </div>
+                    </form>
+                </div>
+                <div class="processing">
+                    <h4>Please wait processing EPUB...</h4>
+                    <img width="64" height="64" src="loading-spin.svg"/>
+                </div>
             </div>
         </div>
     </div>
@@ -36,6 +48,14 @@
         <p>epub-cfi-generator-demo {{version}}. Demo for <a href="http://www.silkcode.de/#p13">LookUP!</a> project of <a href="http://silkcode.de">SilkCode UG</a>. pmstss 2015</p>
     </div>
 </div>
+
+<script>
+    document.getElementById('epub').addEventListener('change', function (e) {
+        document.querySelector('.uploading').style.display = 'none';
+        document.querySelector('.processing').style.display = 'block';
+        document.getElementById('uploadForm').submit();
+    }, false);
+</script>
 
 </body>
 </html>
