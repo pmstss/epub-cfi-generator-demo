@@ -3,8 +3,11 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var multer = require('multer');
+var EpubCfiGenerator = require('./epub-cfi-generator/epub-cfi-generator');
 
 var app = express();
+var VERSION = 'v0.1.0';
+var epubCfiGenerator = new EpubCfiGenerator();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -14,11 +17,29 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/upload',[ multer({ dest: './uploads/'}), function(req, res){
     console.log(req.files);
-    res.render('upload', {data: JSON.stringify(req.files, null, 4)});
+
+    if (req.files.epub) {
+        epubCfiGenerator.parse(path.join(__dirname, req.files.epub.path), false).then(function (data) {
+            res.render('upload', {
+                version: VERSION,
+                data: JSON.stringify(data, null, 4)
+            });
+        }, function (err) {
+            console.log('error: %s', JSON.stringify(arguments));
+            res.render('error', {
+                message: err,
+                error: 500
+            });
+        });
+    } else {
+        res.redirect('index');
+    }
 }]);
 
 app.use('/index', function (req, res) {
-    res.render('index', {param: 'value'});
+    res.render('index', {
+        version: VERSION
+    });
 });
 
 app.use('/', function (req, res) {
