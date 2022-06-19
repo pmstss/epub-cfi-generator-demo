@@ -15,11 +15,9 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.post('/upload',[ multer({ dest: './uploads/'}), function(req, res){
-    console.log(req.files);
-
-    if (req.files.epub) {
-        epubCfiGenerator.parse(path.join(__dirname, req.files.epub.path), false).then(function (data) {
+app.post('/upload', multer({ dest: './uploads/'}).single('epub'), function(req, res){
+    if (req.file) {
+        epubCfiGenerator.parse(path.join(__dirname, req.file.path), false).then(function (data) {
             res.render('upload', {
                 version: VERSION,
                 data: JSON.stringify(data, null, 4)
@@ -34,7 +32,7 @@ app.post('/upload',[ multer({ dest: './uploads/'}), function(req, res){
     } else {
         res.redirect('index');
     }
-}]);
+});
 
 app.use('/index', function (req, res) {
     res.render('index', {
