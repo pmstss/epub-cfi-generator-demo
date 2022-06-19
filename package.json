@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "start": "node app-runner.js"
+        "start": "node src/app-runner.js"
     },
     "dependencies": {
         "body-parser": "~1.20.0",
@@ -16,6 +16,6 @@
         "serve-favicon": "~2.5.0"
     },
     "engines": {
-      "node": "16.x"
+        "node": "16.x"
     }
 }
