@@ -3,7 +3,8 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "start": "node src/app-runner.js"
+        "start": "node src/app-runner.js",
+        "lint": "eslint src"
     },
     "dependencies": {
         "body-parser": "~1.20.0",
@@ -18,5 +19,10 @@
     },
     "engines": {
         "node": "16.x"
+    },
+    "devDependencies": {
+        "eslint": "^8.18.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-plugin-import": "^2.26.0"
     }
 }
