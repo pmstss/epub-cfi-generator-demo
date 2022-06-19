@@ -1,3 +1,3 @@
 # epub-cfi-generator-demo
 
-not yet ready
+web wrapper for [epub-cfi-generator](https://github.com/pmstss/epub-cfi-generator)
