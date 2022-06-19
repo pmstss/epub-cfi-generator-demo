@@ -3,7 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var multer = require('multer');
-var EpubCfiGenerator = require('../epub-cfi-generator/epub-cfi-generator');
+var EpubCfiGenerator = require('epub-cfi-generator');
 
 var app = express();
 var VERSION = 'v0.1.0';
